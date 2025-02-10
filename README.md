@@ -89,7 +89,7 @@ JWT_SECRET=<tu_secreto_jwt>
     {
       "name": "string",
       "description": "string",
-      "age": "string",
+      "age": "number",
       "type": "string",
       "email": "string"
     }
