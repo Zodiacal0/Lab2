@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "34256af6-5a8e-4b35-8fad-dfdf6ec76f1a",
+		"_postman_id": "2c2b1ac3-edc4-4005-96c0-61b03537cc7a",
 		"name": "Adoption-System",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37641996"
+		"_exporter_id": "38544176"
 	},
 	"item": [
 		{
@@ -55,7 +55,7 @@
 								{
 									"key": "profilePicture",
 									"type": "file",
-									"src": "postman-cloud:///1ef4dc1f-9b79-4680-a529-ea114dc8ffeb"
+									"src": "/C:/Users/javie/Desktop/140206845.jpeg"
 								}
 							]
 						},
@@ -243,6 +243,48 @@
 					"response": []
 				},
 				{
+					"name": "Actualizar imagen de perfil",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "newProfilePicture",
+									"type": "file",
+									"src": "/C:/Users/javie/Desktop/140206845.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/adoptionSystem/v1/user/updatePictureProfile/:uid",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"user",
+								"updatePictureProfile",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "67aa73bbbe5807c906557873"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Actualizar usuario",
 					"request": {
 						"method": "PUT",
@@ -366,7 +408,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"luna\",\r\n    \"description\":\"Mascota de 4 años\",\r\n    \"age\":4,\r\n    \"type\":\"Perro\",\r\n    \"email\":\"jeustaquiosss@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"name\":\"luna\",\r\n    \"description\":\"Mascota de 4 años\",\r\n    \"age\":4,\r\n    \"type\":\"Perro\",\r\n    \"email\":\"amejia@gmail.es\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -405,7 +447,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"date\": \"2023-10-15T10:00:00Z\",\r\n  \"pet\": \"60d21b4667d0d8992e610c85\",\r\n  \"user\": \"60d21b4667d0d8992e610c86\"\r\n}",
+							"raw": "{\r\n  \"date\": \"2023-10-15T10:00:00Z\",\r\n  \"pet\": \"67aa75369e9dbe30d71ee790\",\r\n  \"user\": \"67aa73bbbe5807c906557873\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -442,7 +484,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uidUser\": \"67a3dfca8c377f70558e55fb\"\r\n}",
+							"raw": "{\r\n    \"uidUser\": \"67aa73bbbe5807c906557873\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -507,7 +549,7 @@
 							"variable": [
 								{
 									"key": "uid",
-									"value": "67a3e1068c377f70558e560c"
+									"value": "67aa754b9e9dbe30d71ee794"
 								}
 							]
 						}
@@ -542,7 +584,7 @@
 							"variable": [
 								{
 									"key": "uid",
-									"value": "67a63ec96f00d22b7db873a3"
+									"value": "67aa754b9e9dbe30d71ee794"
 								}
 							]
 						}

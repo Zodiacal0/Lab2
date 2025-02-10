@@ -6,7 +6,7 @@ Esta API está diseñada para gestionar citas para adopciones de mascotas. Inclu
 
 Cree un archivo `.env` en el directorio raíz y agregue las siguientes variables:
 
-```
+```plaintext
 MONGO_URI=<tu_cadena_de_conexión_mongodb>
 PORT=<tu_puerto_del_servidor>
 JWT_SECRET=<tu_secreto_jwt>
@@ -89,7 +89,7 @@ JWT_SECRET=<tu_secreto_jwt>
     {
       "name": "string",
       "description": "string",
-      "age": "number",
+      "age": "string",
       "type": "string",
       "email": "string"
     }
@@ -115,7 +115,7 @@ JWT_SECRET=<tu_secreto_jwt>
   - **Cuerpo:**
     ```json
     {
-      "date": "2023-10-15T10:00:00Z",
+      "date": "string",
       "pet": "string",
       "user": "string"
     }
@@ -125,17 +125,42 @@ JWT_SECRET=<tu_secreto_jwt>
 
 Las siguientes funcionalidades necesitan ser desarrolladas:
 
-1. **Actualizar Foto del Usuario**
-   - Descripción: Implementar funcionalidad para actualizar la foto de perfil del usuario.
-
-2. **Listar Citas**
-   - Descripción: Implementar funcionalidad para listar todas las citas de un usuario.
-
-3. **Actualizar Cita**
-   - Descripción: Implementar funcionalidad para actualizar una cita existente.
-
-4. **Cancelar Cita**
-   - Descripción: Implementar funcionalidad para cancelar una cita existente.
-
-5. **Entrega**
+1. **Entrega**
    - Funcionalidades deben ser parte del código fuente y ser entregadas en tiempo y forma indicada en clase.
+
+- **Actualizar Foto del Usuario**
+  - **URL:** `/adoptionSystem/v1/user/updatePictureProfile/:uid`
+  - **Método:** `PATCH`
+  - **Cuerpo:**
+    ```json
+    {
+      "newProfilePicture": "file"
+    }
+    ```
+
+- **Listar Citas**
+  - **URL:** `/adoptionSystem/v1/appointment/getAppointment`
+  - **Método:** `GET`
+  - **Cuerpo:**
+    ```json
+    {
+      "uidUser": "string"
+    }
+    ```
+
+- **Actualizar Cita**
+  - **URL:** `/adoptionSystem/v1/appointment/updateAppointment/:uid`
+  - **Método:** `PATCH`
+  - **Cuerpo:**
+  -**Pámetros:** `uid: id de la cita a cancelar`
+    ```json
+    {
+      "pet": "string",
+      "user": "string"
+    }
+    ```
+
+- **Cancelar Cita**
+  - **URL:** `/adoptionSystem/v1/appointment/cancelAppointment/:uid`
+  - **Método:** `PATCH`
+  -**Pámetros:** `uid: id de la cita a cancelar`

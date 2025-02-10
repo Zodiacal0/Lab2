@@ -2,7 +2,7 @@ import { hash } from "argon2";
 import User from "./user.model.js"
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 
 export const getUserById = async (req, res) => {
     try{
@@ -131,13 +131,15 @@ export const updateUser = async (req, res) => {
     }
 }
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 export const updateProfilePicture = async (req, res) => {
     try {
         const { uid } = req.params; 
         let newPicture = req.file ? req.file.filename : null; 
 
         const user = await User.findById(uid);
-
         if (!user) {
             return res.status(404).json({
                 success: false,
@@ -146,26 +148,30 @@ export const updateProfilePicture = async (req, res) => {
         }
 
         if (user.profilePicture) {
-            const olPicture = path.join(__dirname, '../../public/uploads/profile-pictures', user.profilePicture);
-            
-            if (fs.existsSync(olPicture)) {
-                fs.unlinkSync(olPicture);  
-            };
-        };
+            const oldPicturePath = path.join(__dirname, '../../public/uploads/profile-pictures', user.profilePicture);
+
+            try {
+                if (fs.existsSync(oldPicturePath)) {
+                    fs.unlinkSync(oldPicturePath);
+                }
+            } catch (err) {
+                console.error('Error al eliminar la foto anterior:', err);
+            }
+        }
 
         user.profilePicture = newPicture;
         await user.save();
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
-            msg: 'ProfilePicture Actualizado',
-            user, 
+            msg: 'Foto de perfil actualizada',
+            user,
         });
     } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
-            msg: 'Error al actualizar imagen de perfil',
-            error: err.message, 
+            msg: 'Error al actualizar la imagen de perfil',
+            error: err.message,
         });
     }
 };
